@@ -1,0 +1,7 @@
+path: E:/QRLPR/t_2.2/anpr-yolov8/models_0/License Plate Recognition.v4-resized640_aug3x-accurate.yolov8 # dataset root dir
+train: images/train # train images (relative to 'path')
+val: images/train # val images (relative to 'path')
+test: images/test # test images (relative to 'path
+# Classes
+names:
+  0: License
