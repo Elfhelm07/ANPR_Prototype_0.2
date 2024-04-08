@@ -4,7 +4,7 @@ import pandas as pd
 import OCR
 from sort.sort import *
 from OCR import get_car, read_license_plate, write_csv
-
+from moviepy.editor import *
 '''
 model = YOLO("yolov8s.pt")
 cap = cv2.VideoCapture("veh1.mp4")
@@ -59,13 +59,23 @@ cv2.destroyAllWindows()
 results = {}
 
 mot_tracker = Sort()
+path = r' Enter the abs file path here '
+def framerate(self,path):
+    filen = path
+    clip = VideoFileClip(filen)
+    rate = clip.fps
+    #print("FPS : " + str(rate)
+    return str(rate)
+
+
+
 
 # load models
 coco_model = YOLO('yolov8n.pt')
 license_plate_detector = YOLO(r't_2.2\runs\detect\train\weights\best.pt')
 
 # load video 
-cap = cv2.VideoCapture(r't_2.2\2024-02-26 20-38-54.mp4')
+cap = cv2.VideoCapture(path)
 
 vehicles = [2, 3, 5, 7]
 
@@ -73,7 +83,8 @@ vehicles = [2, 3, 5, 7]
 frame_nmr = -1
 ret = True
 while ret:
-    frame_nmr += 10
+    
+    frame_nmr += framerate(path)
     ret, frame = cap.read()
     if ret:
         results[frame_nmr] = {}
