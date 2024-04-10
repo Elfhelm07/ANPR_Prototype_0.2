@@ -6,14 +6,6 @@ from sort.sort import *
 from OCR import get_car, read_license_plate, write_csv
 from moviepy.editor import *
 '''
-model = YOLO("yolov8s.pt")
-cap = cv2.VideoCapture("veh1.mp4")
-my_file = open("coco.txt", "r")
-data = my_file.read()
-class_list = data.split("\n")
-count = 0
-vehicle_classes = ["car", "truck", "bus", "motorcycle"]
-vehicle_detected = False  # Flag to indicate if a vehicle has been detected
 while True:
     count += 1
     if count % 4 != 0:
@@ -22,10 +14,6 @@ while True:
     if not ret:
         break
     
-    frame = cv2.resize(frame, (1020, 500))
-
-    results = model.predict(frame)
-
     a = results[0].boxes.data
     px = pd.DataFrame(a).astype("float")
 
